@@ -162,6 +162,9 @@ public class CustomerLoginPage extends TestBase {
 	    System.out.println("Money Removed");
 	}
 
+	// Demo commit
+	// Demotest
+
 	String S1 = accNumber.getText();
 	String S2 = accBalance.getText();
 
