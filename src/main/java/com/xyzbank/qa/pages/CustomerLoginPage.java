@@ -59,6 +59,11 @@ public class CustomerLoginPage extends TestBase {
 
     @FindBy(xpath = "//strong[normalize-space()='1009']")
     WebElement accNumber;
+    @FindBy(xpath = "//span[contains(text(),'Ron Weasly')]")
+    WebElement text;
+
+    @FindBy(xpath = "(//strong[normalize-space()='Rupee'])[1]")
+    WebElement currency;
 
     @FindBy(xpath = "//strong[normalize-space()='0']")
     WebElement accBalance;
@@ -72,8 +77,52 @@ public class CustomerLoginPage extends TestBase {
     @FindBy(xpath = "//input[@id='end']")
     WebElement dateBtn2;
 
+    @FindBy(xpath = "//button[contains(text(),'Customer Login')]")
+    WebElement customerLoginButton;
+
     public CustomerLoginPage() {
 	PageFactory.initElements(driver, this);
+    }
+
+    public void logincustomerinfo() {
+	waitForElementToBeVisible(customerLoginButton).click();
+	System.out.println("Customer Login Button is clicked");
+
+	WebElement visibleuserlistDropMenu = waitForElementToBeVisible(userlistDDM);
+	Select sel = new Select(visibleuserlistDropMenu);
+	for (int index = 0; index < 4; index++) {
+	    sel.selectByIndex(index);
+	    System.out.println("Drop-Down Menu is Selected");
+	}
+
+	waitForElementToBeVisible(loginbtn).click();
+
+	WebElement visibleaccSelDropMenu = waitForElementToBeVisible(accSelDDM);
+
+	Select sel2 = new Select(visibleaccSelDropMenu);
+	for (int index = 0; index < 3; index++) {
+	    sel2.selectByIndex(index);
+
+	    System.out.println("Drop-Down Menu is Selected");
+
+	}
+	String S1 = accNumber.getText();
+	String S2 = accBalance.getText();
+	String S3 = text.getText();
+	String S4 = currency.getText();
+
+	Assert.assertEquals(S1, "1009", "Account Number is WRONG.");
+	System.out.println("Actual Account Number : 1005");
+
+	Assert.assertEquals(S2, "0", "Account Balance is WRONG.");
+	System.out.println("Actual Account Balance : 0");
+
+	Assert.assertEquals(S3, "Ron Weasly", "Customer name is Wrong");
+	System.out.println("Customer name matched : Harry Potter");
+
+	Assert.assertEquals(S4, "Rupee", "Account currency is Wrong");
+	System.out.println("Account currency matched : Pound");
+	driver.quit();
     }
 
     public void testCustomerLoginFlow(List<String> deposits, List<String> withdrawals) {

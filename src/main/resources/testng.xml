@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test Suite">
-
     <listeners>
         <listener class-name="com.qa.ExtentReportListener.ExtentReporterNG" />
     </listeners>
-
-    <!-- Test configuration for Chrome -->
-    <test name="Chrome Tests">
+    <test name="Chrome Tests" >
         <parameter name="browser" value="chrome" />
         <classes>
-            <class name="com.xyzbank.qa.testcases.BankManagerTest"></class>
-             <class name="com.xyzbank.qa.testcases.CustomerLoginTest"></class>
+			 <class name="com.xyzbank.qa.testcases.HomepageNavigationTest"></class>
+         <class name="com.xyzbank.qa.testcases.BankManagerTest"></class>
+             <class name="com.xyzbank.qa.testcases.CustomerLoginInfoTest"></class>
+             <class name="com.xyzbank.qa.testcases.CustomerLoginTest"></class>  
         </classes>
     </test>
-
+  
     
+      
 </suite>

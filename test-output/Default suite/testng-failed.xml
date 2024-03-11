@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.xyzbank.qa.testcases.CustomerLoginTest">
+      <class name="com.xyzbank.qa.testcases.BankManagerTest">
         <methods>
-          <include name="testCustomerLoginFlow"/>
+          <include name="invalidCustomerDetails"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.xyzbank.qa.testcases.CustomerLoginTest -->
+      </class> <!-- com.xyzbank.qa.testcases.BankManagerTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

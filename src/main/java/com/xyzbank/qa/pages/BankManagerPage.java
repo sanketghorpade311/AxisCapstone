@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.xyzbank.qa.base.TestBase;
 
@@ -116,6 +117,37 @@ public class BankManagerPage extends TestBase {
 
 	homebtn.click();
 	System.out.println("Home Button is clicked:");
+	driver.quit();
+
+    }
+
+    public void invalidCustomerDetails(String fname, String lname, String postc) {
+	WebElement visiblemanagerLoginbtn = waitForElementToBeVisible(managerLoginbtn);
+	visiblemanagerLoginbtn.click();
+	System.out.println("Manager Login Button is Clicked");
+
+	WebElement visibleaddCustomer = waitForElementToBeVisible(addCustomer);
+	visibleaddCustomer.click();
+	System.out.println("Add Customer Button is Clicked");
+
+	fn.sendKeys(fname);
+	System.out.println("First Name : Raj56@#$%^ is Added in the field");
+
+	ln.sendKeys(lname);
+	System.out.println("Last Name : (*&^Kapoor is Added in the field");
+
+	pc.sendKeys(postc);
+	System.out.println("Post Code : @#%^XYZA is Added in the field");
+
+	subbtn.click();
+
+	Alert alt = driver.switchTo().alert();
+	String altertext1 = alt.getText();
+	Assert.assertEquals(altertext1, "Please provide the valid Customer details",
+		"Account is not added as the details are invalid");
+	System.out.println("Submit Button is Clicked");
+	alt.accept();
+
 	driver.quit();
 
     }

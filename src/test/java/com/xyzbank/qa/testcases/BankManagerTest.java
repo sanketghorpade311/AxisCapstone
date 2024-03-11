@@ -34,4 +34,11 @@ public class BankManagerTest extends TestBase {
 	user1.existing();
     }
 
+    @Test(priority = 2)
+    public void invalidCustomerDetails() {
+
+	manager.invalidCustomerDetails(prop.getProperty("firstnameinvalid"), prop.getProperty("lastnameinvalid"),
+		prop.getProperty("postcodeinvalid"));
+
+    }
 }
