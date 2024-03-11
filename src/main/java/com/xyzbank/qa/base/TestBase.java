@@ -15,6 +15,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import com.xyzbank.qa.util.TestUtil;
 import com.xyzbank.qa.util.WebEventListener;
 
+@SuppressWarnings("deprecation")
 public class TestBase {
 
     public static WebDriver driver;

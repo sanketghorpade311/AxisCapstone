@@ -8,9 +8,10 @@
         <parameter name="browser" value="chrome" />
         <classes>
 			 <class name="com.xyzbank.qa.testcases.HomepageNavigationTest"></class>
-         <class name="com.xyzbank.qa.testcases.BankManagerTest"></class>
+         
              <class name="com.xyzbank.qa.testcases.CustomerLoginInfoTest"></class>
              <class name="com.xyzbank.qa.testcases.CustomerLoginTest"></class>  
+             <class name="com.xyzbank.qa.testcases.BankManagerTest"></class>
         </classes>
     </test>
   
