@@ -1,15 +1,6 @@
 package com.xyzbank.qa.util;
 
-/*************************************** PURPOSE **********************************
-
- - This class implements the WebDriverEventListener, which is included under events.
- The purpose of implementing this interface is to override all the methods and define certain useful  Log statements 
- which would be displayed/logged as the application under test is being run.
-
- Do not call any of these methods, instead these methods will be invoked automatically
- as an when the action done (click, findBy etc). 
-
- */
+import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -19,6 +10,7 @@ import org.openqa.selenium.support.events.WebDriverEventListener;
 
 import com.xyzbank.qa.base.TestBase;
 
+@SuppressWarnings("deprecation")
 public class WebEventListener extends TestBase implements WebDriverEventListener {
 
     public void beforeNavigateTo(String url, WebDriver driver) {
@@ -59,6 +51,15 @@ public class WebEventListener extends TestBase implements WebDriverEventListener
 
     public void afterNavigateForward(WebDriver driver) {
 	System.out.println("Navigated forward to next page");
+    }
+
+    public void onException(Throwable error, WebDriver driver) {
+	System.out.println("Exception occured: " + error);
+	try {
+	    TestUtil.takeScreenshotAtEndOfTest();
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
     }
 
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
@@ -144,12 +145,6 @@ public class WebEventListener extends TestBase implements WebDriverEventListener
     }
 
     public void beforeSwitchToWindow(String arg0, WebDriver arg1) {
-	// TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void onException(Throwable throwable, WebDriver driver) {
 	// TODO Auto-generated method stub
 
     }
